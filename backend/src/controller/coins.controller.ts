@@ -28,4 +28,10 @@ export default {
       data: coin,
     });
   }),
+
+  create: catchAsync(async (req: Request, res: Response) => {}),
+
+  update: catchAsync(async (req: Request, res: Response) => {}),
+
+  delete: catchAsync(async (req: Request, res: Response) => {})
 };

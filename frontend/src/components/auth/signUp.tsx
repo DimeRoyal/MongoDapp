@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { supabase } from "@/services/supabase";
 
 import {
   Form,
@@ -15,7 +14,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { signup } from "@/services/apiAuth";
+import { signupWithEmail, signupWithGoogle } from "@/services/apiAuth";
 
 type Props = {
   updateAuth: () => void;
@@ -49,7 +48,7 @@ export default function SignUp({ updateAuth }: Props) {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const { data, error } = await signup(values);
+    const { data, error } = await signupWithEmail(values);
 
     if (data) {
       toast({
@@ -142,9 +141,9 @@ export default function SignUp({ updateAuth }: Props) {
               <Button type="submit" className="w-full">
                 Create an account
               </Button>
-              {/* <Button variant="outline" className="w-full">
+               <Button variant="outline" className="w-full" onClick={() => signupWithGoogle()}>
                 Login with Google
-              </Button> */}
+              </Button>
             </div>
           </div>
 
