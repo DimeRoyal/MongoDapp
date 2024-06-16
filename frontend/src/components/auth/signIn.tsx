@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useToast } from "../ui/use-toast";
 import { useNavigate } from "react-router-dom";
-import { login } from "@/services/apiAuth";
+import { login, signupWithGoogle } from "@/services/apiAuth";
 
 type Props = {
   updateAuth: () => void;
@@ -107,9 +107,10 @@ export default function SignIn({ updateAuth }: Props) {
               <Button type="submit" className="w-full">
                 Login
               </Button>
-              {/* <Button variant="outline" className="w-full">
+
+               <Button type="button" variant="outline" className="w-full" onClick={() => signupWithGoogle()}>
                 Login with Google
-              </Button> */}
+              </Button>
             </div>
           </div>
 
